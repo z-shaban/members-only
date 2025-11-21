@@ -1,5 +1,6 @@
 const db = require('../db/queries')
-const {body, validationResult, matchedData} = require('express-validator')
+const {body, validationResult, matchedData} = require('express-validator');
+const bcrypt = require('bcryptjs')
 
 const validateUser = [
     body('first_name')
@@ -62,8 +63,19 @@ const createUser = [
         if(!errors.isEmpty()){
             return res.status(400).render('pages/sign-up',{title: 'Sign Up', errors:errors.array()})
         }
-         res.send('created')
-        console.log(matchedData(req))
+        
+         
+        const {first_name, last_name,username,password} = matchedData(req)
+
+        try{
+           const hashedPassword = await bcrypt.hash(password, 10)
+        await db.createUser(first_name,last_name,username,hashedPassword)
+        res.redirect('/')
+        } catch(error){
+            res.status(500).render('pages/sign-up',{title: 'Sign Up', errors: [{ msg: 'Server error, please try again.' }]})
+        }
+       
+        
     }
 ]
 

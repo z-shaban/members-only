@@ -2,7 +2,7 @@ require ('dotenv').config()
 const {Client} = require('pg');
 
 const SQL = `
-DROP TABLE IF EXISTS messagess;
+DROP TABLE IF EXISTS messages;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE IF NOT EXISTS users(
@@ -11,7 +11,7 @@ first_name TEXT,
 last_name TEXT,
 username TEXT UNIQUE,
 password TEXT,
-membership_status BOOLEAN
+membership_status BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE IF NOT EXISTS messages(
