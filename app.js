@@ -8,6 +8,8 @@ const expressLayouts = require('express-ejs-layouts');
 const loginRouter = require('./routes/loginRouter');
 const session = require('express-session')
 const pgSession = require('connect-pg-simple')(session)
+const passport = require('passport');
+require('./config/passport')
 
 
 const app = express();
@@ -30,6 +32,7 @@ app.use(session({
         maxAge: 1000 * 60 * 60 * 24
     }
 }))
+app.use(passport.session())
 
 app.use('/', indexRouter )
 app.use('/sign-up', signUpRouter)
