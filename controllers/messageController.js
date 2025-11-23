@@ -1,5 +1,6 @@
 const db = require('../db/queries')
 
+
 async function getMessageForm(req,res){
     res.render('pages/messages',{title: 'Message', user: req.user})
 }
