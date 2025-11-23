@@ -9,6 +9,7 @@ const loginRouter = require('./routes/loginRouter');
 const session = require('express-session')
 const pgSession = require('connect-pg-simple')(session)
 const passport = require('passport');
+const messageRouter = require('./routes/messageRouter');
 require('./config/passport')
 
 
@@ -34,9 +35,19 @@ app.use(session({
 }))
 app.use(passport.session())
 
+app.use((req, res, next) => {
+    console.log('========== SESSION DEBUG ==========');
+    console.log('req.session:', req.session);
+    console.log('req.user:', req.user);
+    console.log('req.isAuthenticated():', req.isAuthenticated());
+    console.log('===================================');
+    next();
+});
+
 app.use('/', indexRouter )
 app.use('/sign-up', signUpRouter)
 app.use('/login', loginRouter)
+app.use('/message', messageRouter)
 
 app.listen(PORT, (error)=>{
     if (error){

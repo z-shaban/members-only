@@ -1,6 +1,15 @@
 <div>
     <h1>MEMBERS ONLY</h1>
-    <a href="/">HOME</a>
-    <a href="/sign-up">SIGN UP</a>
-    <a href="/login">LOG IN</a>
+
+    <% if (user) { %>
+        <a href="/">HOME</a>
+        <a href="/message">CREATE MESSAGE</a>
+        <a href="">JOIN CLUB</a>
+        <p>Welcome <%= user.username %></p>
+        <a href="">LOG OUT</a>
+    <% } else { %>
+        <a href="/">HOME</a>
+        <a href="/sign-up">SIGN UP</a>
+        <a href="/login">LOG IN</a>
+    <% } %>
 </div>

@@ -5,10 +5,7 @@ const passport = require('passport')
 
 
 loginRouter.get('/', loginController.getloginForm)
-loginRouter.post('/',   passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/sign-up"
-  }))
+loginRouter.post('/',  loginController.login)
 
 
 module.exports = loginRouter
