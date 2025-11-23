@@ -10,6 +10,7 @@ const session = require('express-session')
 const pgSession = require('connect-pg-simple')(session)
 const passport = require('passport');
 const messageRouter = require('./routes/messageRouter');
+const logout = require('./routes/logout');
 require('./config/passport')
 
 
@@ -48,6 +49,7 @@ app.use('/', indexRouter )
 app.use('/sign-up', signUpRouter)
 app.use('/login', loginRouter)
 app.use('/message', messageRouter)
+app.use('/logout', logout)
 
 app.listen(PORT, (error)=>{
     if (error){

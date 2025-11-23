@@ -1,6 +1,6 @@
 
 async function getloginForm(req, res) {
-    res.render('pages/login',{title: 'Log In'})
+    res.render('pages/login',{title: 'Log In', user: req.user})
 }
 
 async function login(req,res){
