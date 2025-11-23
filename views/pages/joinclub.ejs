@@ -1,0 +1,10 @@
+<div>
+    <p>Enter secret code to become a member</p>
+
+    <form action="/join-club" method="post">
+        <label for="passcode">SECRET PASSCODE:</label>
+        <input type="text" name="passcode" required>
+        <button type="submit">JOIN</button>
+    </form>
+     <%- include('../partials/errors') %>
+</div>

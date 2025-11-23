@@ -18,9 +18,14 @@ async function addMessage(message_title, message, user_id){
   await pool.query(`INSERT INTO messages (message_title, message, user_id) VALUES ($1, $2, $3)`,[message_title, message, user_id])
 }
 
+async function makeClubMember(id){
+  await pool.query(`UPDATE users SET membership_status = true WHERE id = $1`,[id])
+}
+
 module.exports ={
   getAllMessages,
     createUser,
     getUsername,
-    addMessage
+    addMessage,
+    makeClubMember
 }

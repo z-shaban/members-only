@@ -11,6 +11,7 @@ const pgSession = require('connect-pg-simple')(session)
 const passport = require('passport');
 const messageRouter = require('./routes/messageRouter');
 const logout = require('./routes/logout');
+const joinclubRouter = require('./routes/joinclubRouter');
 require('./config/passport')
 
 
@@ -50,6 +51,7 @@ app.use('/sign-up', signUpRouter)
 app.use('/login', loginRouter)
 app.use('/message', messageRouter)
 app.use('/logout', logout)
+app.use('/join-club',joinclubRouter)
 
 app.listen(PORT, (error)=>{
     if (error){
