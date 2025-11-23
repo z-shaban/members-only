@@ -11,6 +11,12 @@ Frontend: EJS, tailwind
 Backend: nodejs, express
 Database: PostgreSQL
 Deployment:
+Authentication: passport
+
 
 Why i built this.
 This project was built to mainly practice authentication concepts
+
+future improvement 
+add an admin
+styling
